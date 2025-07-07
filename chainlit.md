@@ -1,14 +1,21 @@
-# Welcome to Chainlit! 🚀🤖
+# 🤖 AI Medical Chatbot
 
-Hi there, Developer! 👋 We're excited to have you on board. Chainlit is a powerful tool designed to help you prototype, debug and share applications built on top of LLMs.
+Chào mừng bạn đến với trợ lý y khoa sử dụng mô hình LoRA!  
+Bạn có thể đặt câu hỏi về các chủ đề y tế như:
 
-## Useful Links 🔗
+- ✅ Triệu chứng bệnh
+- 💊 Tác dụng phụ của thuốc
+- 🩺 Phác đồ và phương pháp điều trị
+- 📚 Kiến thức y khoa tổng quát
 
-- **Documentation:** Get started with our comprehensive [Chainlit Documentation](https://docs.chainlit.io) 📚
-- **Discord Community:** Join our friendly [Chainlit Discord](https://discord.gg/k73SQ3FyUh) to ask questions, share your projects, and connect with other developers! 💬
+---
 
-We can't wait to see what you create with Chainlit! Happy coding! 💻😊
+## 🧪 Ví dụ câu hỏi
 
-## Welcome screen
+- *Tôi bị đau đầu, buồn nôn là dấu hiệu của bệnh gì?*
+- *Paracetamol có tác dụng phụ gì không?*
+- *Điều trị viêm phổi như thế nào?*
 
-To modify the welcome screen, edit the `chainlit.md` file at the root of your project. If you do not want a welcome screen, just leave this file empty.
+---
+
+📝 **Hãy nhập câu hỏi của bạn bên dưới để bắt đầu cuộc trò chuyện!**

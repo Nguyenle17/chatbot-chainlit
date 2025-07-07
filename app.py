@@ -1,28 +1,32 @@
 import chainlit as cl
-from unsloth import FastLanguageModel
-from transformers import AutoTokenizer
+import requests
 
-base_model = "unsloth/llama-3.2-3b-bnb-4bit"
-adapter_path = "./Llama-3.2-3B-bnb-4bit-MedMCQA"
+SERVER_URL = "https://eceb1a9338f2.ngrok-free.app/chat"
 
-print("Loading base model...")
-model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name = base_model,
-    max_seq_length = 2048,
-    dtype = None,
-    load_in_4bit = True,
-)
-
-print("Loading LoRA adapter...")
-model.load_adapter(adapter_path)
-model.eval()
+@cl.on_chat_start
+async def on_chat_start():
+    elements = [
+        cl.Image(name="doctor_avatar", display="inline", path="assets/doctor.png")
+    ]
+    
+    await cl.Message(
+        content="👩‍⚕️ Xin chào! Tôi là trợ lý y khoa AI. Bạn muốn hỏi gì hôm nay?",
+        elements=elements
+    ).send()
 
 @cl.on_message
-async def main(message: cl.Message):
+async def on_message(message: cl.Message):
     prompt = message.content
 
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    outputs = model.generate(**inputs, max_new_tokens=512)
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    try:
+        res = requests.post(SERVER_URL, json={"prompt": prompt})
+        res.raise_for_status()
+        response = res.json().get("response", " Không nhận được phản hồi hợp lệ từ mô hình.")
+    except Exception as e:
+        response = f"Lỗi khi kết nối tới server: {e}"
 
-    await cl.Message(content=response).send()
+    msg = cl.Message(content="Đang suy nghĩ...")  
+    await msg.send()
+    
+    msg.content = response
+    await msg.update()

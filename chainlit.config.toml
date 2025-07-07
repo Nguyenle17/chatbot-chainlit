@@ -1,0 +1,13 @@
+[project]
+name = "AI Medical Chatbot"
+description = "Hỏi đáp y khoa bằng mô hình LoRA"
+icon = "assets/logo.png"   
+theme = "dark"           
+default_language = "vi"   
+
+[ui]
+name = "Medical assistant"
+input_placeholder = "Nhập câu hỏi của bạn..."
+show_restart_button = true
+show_clear_button = true
+default_openai_settings = false
