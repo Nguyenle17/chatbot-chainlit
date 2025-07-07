@@ -1,10 +1,8 @@
-# Torch with CUDA support (CUDA 11.8 - phù hợp Render GPU)
-torch==2.1.2+cu118
-torchvision==0.16.2+cu118
-torchaudio==2.1.2+cu118
+torch==2.5.1+cu118
+torchvision==0.18.1+cu118
+torchaudio==2.5.1+cu118
 --extra-index-url https://download.pytorch.org/whl/cu118
 
-# Các thư viện khác
 chainlit
 unsloth
 transformers
